@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<!-- Hero секция -->
+<div class="hero">
+    <h2 class="hero-title">Добро пожаловать в Court Vision 🏀</h2>
+    <p class="hero-subtitle">Все о команде, игроках и тактиках баскетбола</p>
+    <a href="{% url 'attack' %}" class="hero-button">Начать играть</a>
+</div>
+
+<!-- Мини-панель ссылок -->
+<div class="quick-links">
+    <a href="{% url 'attack' %}">Атака</a>
+    <a href="{% url 'defense' %}">Защита</a>
+    <a href="{% url 'news' %}">Новости</a>
+    <a href="{% url 'players' %}">Игроки</a>
+</div>
+
+<style>
+/* Подключаем современный шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hero секция */
+.hero {
+    width: 100%;
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(120deg, #ff7f50, #ff6347, #ff4500);
+    background-size: 300% 300%;
+    animation: gradientBG 15s ease infinite;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.2s ease forwards;
+    opacity: 0;
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    animation: fadeInUp 1.2s ease 0.5s forwards;
+    opacity: 0;
+}
+
+.hero-button {
+    text-decoration: none;
+    color: #ff6347;
+    background: white;
+    font-weight: 600;
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hero-button:hover {
+    background: #ff6347;
+    color: white;
+    transform: scale(1.15) rotate(-2deg);
+}
+
+/* Анимации текста */
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Мини-панель ссылок */
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.quick-links a {
+    text-decoration: none;
+    background: #ff6347;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.quick-links a:hover {
+    transform: scale(1.1);
+    background: #ff4500;
+}
+</style>
+{% endblock %}
