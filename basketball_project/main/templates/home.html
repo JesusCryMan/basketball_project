@@ -1,68 +1,85 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-<!-- Hero секция -->
-<div class="hero">
-    <h2 class="hero-title">Добро пожаловать в Court Vision 🏀</h2>
-    <p class="hero-subtitle">Все о команде, игроках и тактиках баскетбола</p>
-    <a href="{% url 'attack' %}" class="hero-button">Начать играть</a>
-</div>
+<div class="home-container">
 
-<!-- Мини-панель ссылок -->
-<div class="quick-links">
-    <a href="{% url 'attack' %}">Атака</a>
-    <a href="{% url 'defense' %}">Защита</a>
-    <a href="{% url 'news' %}">Новости</a>
-    <a href="{% url 'players' %}">Игроки</a>
+    <!-- Hero секция с градиентом и анимацией -->
+    <div class="hero">
+        <h1 class="hero-title">Добро пожаловать в Court Vision 🏀</h1>
+        <p class="hero-subtitle">Все о команде, игроках и тактиках баскетбола</p>
+        <a href="{% url 'attack' %}" class="hero-button">Начать играть</a>
+
+        <!-- Анимация мячика -->
+        <div class="animated-ball"></div>
+        <!-- Линии пасов -->
+        <svg class="pass-lines" width="400" height="200">
+            <line x1="20" y1="180" x2="380" y2="20" stroke="#ff6347" stroke-width="4" stroke-dasharray="10,10">
+                <animate attributeName="x2" values="380;50;380" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="y2" values="20;150;20" dur="3s" repeatCount="indefinite"/>
+            </line>
+        </svg>
+    </div>
+
+    <!-- Быстрые ссылки -->
+    <div class="quick-links">
+        <a href="{% url 'attack' %}">Атака</a>
+        <a href="{% url 'defense' %}">Защита</a>
+        <a href="{% url 'players' %}">Игроки</a>
+        <a href="{% url 'news' %}">Новости</a>
+    </div>
+
+    <!-- Блок фич -->
+    <div class="features">
+        <div class="feature-card">
+            <img src="{% static 'images/ball.gif' %}" alt="ball">
+            <h3>Интерактивная доска</h3>
+            <p>Следи за расстановкой, пасами и движениями игроков в реальном времени.</p>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'images/trophy.gif' %}" alt="trophy">
+            <h3>Успехи команды</h3>
+            <p>Награды, чемпионаты и достижения нашей команды за все сезоны.</p>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'images/video.gif' %}" alt="video">
+            <h3>Видео-уроки</h3>
+            <p>Смотри тактики и комбинации прямо на сайте, не уходя на YouTube.</p>
+        </div>
+    </div>
+
 </div>
 
 <style>
-/* Подключаем современный шрифт */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-
 body {
+    background: repeating-linear-gradient(90deg,#f5d6a0,#f5d6a0 40px,#f2c98c 40px,#f2c98c 80px);
     font-family: 'Poppins', sans-serif;
+    transition: 0.5s;
 }
+body.dark { background: #121212; color: #fff; }
 
 /* Hero секция */
 .hero {
-    width: 100%;
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(120deg, #ff7f50, #ff6347, #ff4500);
-    background-size: 300% 300%;
-    animation: gradientBG 15s ease infinite;
+    padding: 120px 20px;
     border-radius: 20px;
     color: white;
     margin-bottom: 50px;
+    background: linear-gradient(120deg, #ff7f50, #ff6347, #ff4500);
+    background-size: 300% 300%;
+    animation: gradientBG 15s ease infinite;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
 }
-
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-.hero-title {
-    font-size: 56px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    animation: fadeInDown 1.2s ease forwards;
-    opacity: 0;
-}
-
-.hero-subtitle {
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 40px;
-    animation: fadeInUp 1.2s ease 0.5s forwards;
-    opacity: 0;
-}
-
+.hero-title { font-size: 56px; font-weight: 800; margin-bottom: 20px; animation: fadeInDown 1.2s ease forwards; opacity: 0; }
+.hero-subtitle { font-size: 24px; margin-bottom: 40px; animation: fadeInUp 1.2s ease 0.5s forwards; opacity: 0; }
 .hero-button {
     text-decoration: none;
     color: #ff6347;
@@ -75,32 +92,28 @@ body {
     display: inline-block;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+.hero-button:hover { background: #ff6347; color: white; transform: scale(1.15) rotate(-2deg); }
+@keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-50px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(50px); } 100% { opacity: 1; transform: translateY(0); } }
 
-.hero-button:hover {
-    background: #ff6347;
-    color: white;
-    transform: scale(1.15) rotate(-2deg);
+/* Анимация мячика */
+.animated-ball {
+    position: absolute;
+    width: 40px; height: 40px;
+    background: orange;
+    border-radius: 50%;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-60px); }
 }
 
-/* Анимации текста */
-@keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-50px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Мини-панель ссылок */
-.quick-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
-}
-
+/* Быстрые ссылки */
+.quick-links { display:flex; justify-content:center; gap:25px; margin-bottom:50px; }
 .quick-links a {
     text-decoration: none;
     background: #ff6347;
@@ -112,10 +125,33 @@ body {
     transition: transform 0.3s, background 0.3s;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
+.quick-links a:hover { transform: scale(1.1); background: #ff4500; }
 
-.quick-links a:hover {
-    transform: scale(1.1);
-    background: #ff4500;
+/* Фичи */
+.features {
+    display: flex; flex-wrap: wrap; justify-content:center; gap:30px;
 }
+.feature-card {
+    background: rgba(255,255,255,0.95);
+    border-radius:20px; width:280px; padding:20px; text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2); transition:transform 0.3s, box-shadow 0.3s; cursor:pointer;
+}
+.feature-card img { width:100px; margin-bottom:15px; }
+.feature-card h3 { color:#cc3a00; margin-bottom:10px; }
+.feature-card p { color:#333; }
+.feature-card:hover { transform: scale(1.05) translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.3); }
+
+body.dark .feature-card { background:#1e1e1e; }
+body.dark .feature-card h3 { color:#ff6347; }
+body.dark .feature-card p { color:#fff; }
 </style>
+
+<script>
+// Тёмная тема
+document.getElementById('theme-toggle').addEventListener('click', ()=>{
+    document.body.classList.toggle('dark');
+    document.querySelectorAll('.feature-card').forEach(c=>c.classList.toggle('dark'));
+});
+</script>
+
 {% endblock %}
