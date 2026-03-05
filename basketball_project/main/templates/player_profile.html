@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ player.name }}{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+
+  <!-- Основной блок профиля -->
+  <div class="profile-card">
+
+    <!-- Фото и прозрачная команда -->
+    <div class="photo-section">
+      <img src="{{ player.photo.url }}" alt="{{ player.name }}">
+      {% if player.team %}
+      <div class="team-label">{{ player.team }}</div>
+      {% endif %}
+    </div>
+
+    <!-- Контент -->
+    <div class="profile-content">
+      
+      <!-- Левая колонка -->
+      <div class="left-col">
+        {% if player.age %}<p><strong>Возраст:</strong> {{ player.age }}</p>{% endif %}
+        {% if player.height %}<p><strong>Рост:</strong> {{ player.height }} см</p>{% endif %}
+        {% if player.weight %}<p><strong>Вес:</strong> {{ player.weight }} кг</p>{% endif %}
+      </div>
+
+      <!-- Центральная колонка -->
+      <div class="center-col">
+        {% if player.position %}<p><strong>Позиция:</strong> {{ player.position }}</p>{% endif %}
+        {% if player.hand %}<p><strong>Ведущая рука:</strong> {{ player.hand }}</p>{% endif %}
+        {% if player.specialty %}<p><strong>Сильный приём:</strong> {{ player.specialty }}</p>{% endif %}
+      </div>
+
+      <!-- Правая колонка -->
+      <div class="right-col">
+        {% if player.generation %}<p><strong>Новое/старое поколение:</strong> {{ player.generation }}</p>{% endif %}
+        {% if player.other_info %}<p><strong>Другое:</strong> {{ player.other_info }}</p>{% endif %}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+body {
+  background:#0f0f0f;
+  color:white;
+}
+
+.profile-container {
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+.profile-card {
+  background:#1a1a1a;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.7);
+}
+
+.photo-section {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow:hidden;
+}
+
+.photo-section img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.team-label {
+  position:absolute;
+  bottom:15px;
+  right:20px;
+  background: rgba(204,58,0,0.6);
+  padding:10px 20px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:18px;
+}
+
+.profile-content {
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  gap:20px;
+}
+
+.profile-content div {
+  flex:1;
+}
+
+.profile-content p {
+  margin:8px 0;
+  font-size:16px;
+  color:#ddd;
+}
+</style>
+
+{% endblock %}

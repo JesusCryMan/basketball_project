@@ -1,22 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Player  # убедись, что у тебя есть модель Player
 
+# Главная страница
 def home(request):
     return render(request, 'home.html')
 
+# Страница атаки
 def attack(request):
     return render(request, 'attack.html')
 
+# Страница защиты
 def defense(request):
     return render(request, 'defense.html')
 
-def news(request):
-    return render(request, 'news.html')
-
-def players(request):
-    return render(request, 'players.html')
-    # views.py
-from django.shortcuts import render
-
+# Новости
 def news(request):
     news_list = [
         {
@@ -39,3 +36,14 @@ def news(request):
         },
     ]
     return render(request, "news.html", {"news_list": news_list})
+
+# Страница со списком игроков
+def players(request):
+    all_players = Player.objects.all()
+    return render(request, 'players.html', {'players': all_players})
+
+# Профиль конкретного игрока
+def player_profile(request, player_id):
+    player = get_object_or_404(Player, id=player_id)
+    return render(request, 'player_profile.html', {'player': player})
+    
