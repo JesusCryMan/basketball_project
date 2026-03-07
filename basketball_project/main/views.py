@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Player  # убедись, что у тебя есть модель Player
+from .models import Player
 
 # Главная страница
 def home(request):
@@ -37,13 +37,14 @@ def news(request):
     ]
     return render(request, "news.html", {"news_list": news_list})
 
-# Страница со списком игроков
+
+# Страница игроков
 def players(request):
     all_players = Player.objects.all()
     return render(request, 'players.html', {'players': all_players})
 
-# Профиль конкретного игрока
-def player_profile(request, player_id):
-    player = get_object_or_404(Player, id=player_id)
+
+# Профиль игрока
+def player_profile(request, slug):
+    player = get_object_or_404(Player, slug=slug)
     return render(request, 'player_profile.html', {'player': player})
-    

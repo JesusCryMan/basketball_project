@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_new.html" %}
 {% load static %}
 
 {% block title %}{{ player.name }}{% endblock %}
@@ -10,16 +10,14 @@
 
     <div class="profile-card">
 
-        <!-- Левая часть: фото игрока -->
         <div class="profile-left">
-            {% comment %}Берём фото из поля photo_filename{% endcomment %}
-            {% with 'images/players/'|add:player.photo_filename as player_img %}
-                <img src="{% static player_img %}" alt="{{ player.name }}" class="profile-img"
-                     onerror="this.src='{% static 'images/players/default_player.jpg' %}'">
-            {% endwith %}
+            {% if player.photo %}
+                <img src="{{ player.photo.url }}" alt="{{ player.name }}" class="profile-img">
+            {% else %}
+                <img src="{% static 'images/default_player.jpg' %}" alt="No Photo" class="profile-img">
+            {% endif %}
         </div>
 
-        <!-- Правая часть: данные игрока -->
         <div class="profile-right">
 
             <h2 class="player-name">{{ player.name }}</h2>
@@ -52,14 +50,16 @@
 </div>
 
 <style>
+/* ===== САЙТ В ТЁМНОЙ ТЕМЕ ===== */
 body {
-    background-color: #111;
-    color: #fff;
+    background-color: #111; /* тёмный фон всего сайта */
+    color: #fff; /* светлый текст по умолчанию */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* ===== ПРОФИЛЬ ===== */
 .profile-page {
     max-width: 1100px;
     margin: auto;
@@ -81,9 +81,9 @@ body {
     gap: 50px;
     padding: 40px;
     border-radius: 20px;
-    background: white;
-    color: black;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: white; /* белый фон карточки */
+    color: black; /* текст внутри карточки черный */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* тень */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
