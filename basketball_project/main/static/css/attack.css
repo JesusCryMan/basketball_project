@@ -1,0 +1,144 @@
+/* Общий фон и шрифты */
+body {
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.attack-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Заголовок страницы */
+.attack-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #f6b93b;
+}
+
+/* Секции тактик */
+.tactic-section {
+    background-color: #1a1a1a;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    transition: transform 0.2s;
+}
+
+.tactic-section:hover {
+    transform: translateY(-5px);
+}
+
+.tactic-section h2 {
+    color: #f6b93b;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.tactic-section p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Видео */
+.video-frame {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Кнопка интерактив */
+.interactive-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background-color: #f6b93b;
+    color: #0d0d0d;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.interactive-btn:hover {
+    background-color: #e1a12b;
+    transform: scale(1.05);
+}
+
+/* Canvas интерактив */
+.court-canvas {
+    width: 100%;
+    height: 280px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    display: none; /* по умолчанию скрыт */
+    margin-bottom: 15px;
+}
+
+/* Ссылки и подсветка */
+a {
+    color: #f6b93b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Картинки зон */
+.zone-img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    display: block;
+    margin: 0 auto 15px auto; /* центрирование + отступ снизу */
+    transition: transform 0.3s; /* плавное увеличение при hover */
+}
+
+.zone-img:hover {
+    transform: scale(1.03); /* лёгкое увеличение картинки при наведении */
+}
+
+/* Специально подогнанные размеры */
+.tactic-section:nth-of-type(2) .zone-img,  /* Пик&Ролл */
+.tactic-section:nth-of-type(3) .zone-img { /* Быстрый прорыв */
+    max-width: 500px;
+}
+
+.tactic-section:nth-of-type(1) .zone-img,  /* ISO */
+.tactic-section:nth-of-type(4) .zone-img { /* Give & Go */
+    max-width: 600px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .video-frame {
+        height: 200px;
+    }
+    .tactic-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .attack-title {
+        font-size: 2rem;
+    }
+    .tactic-section {
+        padding: 15px;
+    }
+    .zone-img {
+        max-width: 100%; /* на мобильных устройствах картинки будут полностью подстраиваться */
+    }
+}

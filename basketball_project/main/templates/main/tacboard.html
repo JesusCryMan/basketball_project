@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Тактики{% endblock %}
+
+{% block content %}
+<div class="tacboard-container">
+
+  <h1 class="tacboard-title">Интерактивная Тактическая Доска 🏀</h1>
+
+  <div class="tacboard-grid">
+
+    <!-- 3-2 Zone -->
+    <div class="tactic-card">
+      <h2>3-2 Зона (Zone Defense)</h2>
+
+      <div class="tactic-item">
+        <h4>Overload Wing</h4>
+        <p>Нагружаем одну сторону поля, чтобы создать свободный бросок на периметре.</p>
+        <iframe src="https://www.youtube.com/embed/MPjxF1qXm2I" title="3-2 Zone Overload Wing" allowfullscreen></iframe>
+      </div>
+
+      <div class="tactic-item">
+        <h4>Skip Pass Attack</h4>
+        <p>Быстрые передачи через периметр для обхода зоны и поиска открытого игрока.</p>
+        <iframe src="https://www.youtube.com/embed/1XPFtMKBoGA" title="3-2 Zone Skip Pass" allowfullscreen></iframe>
+      </div>
+
+      <div class="tactic-item">
+        <h4>High Post Flash</h4>
+        <p>Игрок из высокого поста резко выходит, чтобы разрушить зону и создать проход.</p>
+        <iframe src="https://www.youtube.com/embed/mFMXKK84slc" title="3-2 Zone High Post Flash" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- 2-3 Zone -->
+    <div class="tactic-card">
+      <h2>2-3 Зона (Zone Defense)</h2>
+
+      <div class="tactic-item">
+        <h4>Corner Three Attack</h4>
+        <p>Заполнение углов для бросков из-за дуги против нижней зоны.</p>
+        <iframe src="https://www.youtube.com/embed/8XoG6oV2ph0" title="2-3 Zone Corner Three" allowfullscreen></iframe>
+      </div>
+
+      <div class="tactic-item">
+        <h4>Flash High Post</h4>
+        <p>Игрок в верхней зоне делает рывок в центр для передачи и прохода.</p>
+        <iframe src="https://www.youtube.com/embed/ke4n9nAkHf4" title="2-3 Zone Flash High Post" allowfullscreen></iframe>
+      </div>
+
+      <div class="tactic-item">
+        <h4>Skip & Drive</h4>
+        <p>Пропуск передачи на противоположный фланг и быстрый проход к корзине.</p>
+        <iframe src="https://www.youtube.com/embed/3N8M1k-1s1U" title="2-3 Zone Skip & Drive" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Man-to-Man -->
+    <div class="tactic-card">
+      <h2>Man-to-Man (Личная защита)</h2>
+
+      <div class="tactic-item">
+        <h4>Pick & Roll Attack</h4>
+        <p>Классический заслон и проход к кольцу с возможностью броска или передачи.</p>
+        <iframe src="https://www.youtube.com/embed/3p1P6vYpCFo" title="Man-to-Man Pick & Roll" allowfullscreen></iframe>
+      </div>
+
+      <div class="tactic-item">
+        <h4>Isolation Offense</h4>
+        <p>Создание преимущества один на один для лидера команды на сильной стороне.</p>
+        <iframe src="https://www.youtube.com/embed/fhS2Sx8rPws" title="Man-to-Man Isolation" allowfullscreen></iframe>
+      </div>
+
+      <div class="tactic-item">
+        <h4>Backdoor Cut</h4>
+        <p>Игрок резко режет к корзине за спину защитника для легкого броска.</p>
+        <iframe src="https://www.youtube.com/embed/2oZqlikS7S0" title="Man-to-Man Backdoor Cut" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.tacboard-container {
+  background-color: #121212;
+  min-height: 100vh;
+  color: #fff;
+  padding: 30px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.tacboard-title {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 50px;
+  color: #ffc107;
+  text-shadow: 0 0 10px #ffc107;
+}
+
+.tacboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.tactic-card {
+  background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  width: 320px;
+  padding: 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tactic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.8);
+}
+
+.tactic-card h2 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: #ffb74d;
+  text-align: center;
+}
+
+.tactic-item {
+  margin-bottom: 25px;
+}
+
+.tactic-item h4 {
+  font-size: 1.15em;
+  color: #ffc107;
+  margin-bottom: 8px;
+}
+
+.tactic-item p {
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.tactic-item iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.tactic-item iframe:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 1024px) {
+  .tacboard-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+{% endblock %}

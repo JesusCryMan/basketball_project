@@ -1,0 +1,30 @@
+{% load static %}
+
+{% for player in players %}
+<a href="{{ player.get_absolute_url }}" class="player-card-link">
+  <div class="player-card">
+    <div class="player-header">
+      <div class="number">{{ player.number }}</div>
+      <div class="img-wrapper">
+        <img src="{% static player.get_image_url %}" alt="{{ player.name }}">
+      </div>
+      <div class="player-info">
+        <h3>{{ player.name }}</h3>
+        <span>{{ player.position }}</span>
+      </div>
+    </div>
+    <div class="player-details">
+      <p>Рост: {{ player.height }} см</p>
+      <p>Вес: {{ player.weight }} кг</p>
+      {% if player.achievements %}
+      <p>Достижения: {{ player.achievements }}</p>
+      {% endif %}
+      {% if player.specialty %}
+      <p>Сильная сторона: {{ player.specialty }}</p>
+      {% endif %}
+    </div>
+  </div>
+</a>
+{% empty %}
+<p>Игроков пока нет.</p>
+{% endfor %}
