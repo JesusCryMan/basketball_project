@@ -4,6 +4,7 @@
 {% block title %}Тактики нападения в баскетболе🏀{% endblock %}
 
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'css/attack.css' %}">
 
 <div class="attack-container">
@@ -14,16 +15,18 @@
 <!-- ISO -->
 <section class="tactic-section">
 
-<h2>1. Изолированная атака (Isolation)</h2>
+<h2>1. Isolation</h2>
 
-<img src="{% static 'images/zones/iso.png' %}" class="zone-img">
+<img src="{% static 'images/zones/iso.png' %}" class="zone-img" alt="Isolation">
 
 <p>Игрок 1-на-1 создаёт пространство для броска или прохода.</p>
 
 <iframe class="video-frame"
 src="https://www.youtube.com/embed/DpQLLqXLLYQ"
-allowfullscreen></iframe>
+allowfullscreen>
+</iframe>
 
+<div class="buttons">
 <button class="interactive-btn"
 onclick="toggleCanvas('isoCanvas', isoPlayers, isoSteps)">
 Показать схему
@@ -33,8 +36,9 @@ onclick="toggleCanvas('isoCanvas', isoPlayers, isoSteps)">
 onclick="nextStep('isoCanvas', isoPlayers, isoSteps)">
 Следующий шаг
 </button>
+</div>
 
-<canvas id="isoCanvas" class="court-canvas" width="500" height="280"></canvas>
+<canvas id="isoCanvas" class="court-canvas" width="500" height="300"></canvas>
 
 </section>
 
@@ -44,14 +48,16 @@ onclick="nextStep('isoCanvas', isoPlayers, isoSteps)">
 
 <h2>2. Pick & Roll</h2>
 
-<img src="{% static 'images/zones/pick.png' %}" class="zone-img">
+<img src="{% static 'images/zones/pick.png' %}" class="zone-img" alt="Pick and Roll">
 
 <p>Один игрок ставит заслон, второй проходит с мячом.</p>
 
 <iframe class="video-frame"
 src="https://www.youtube.com/embed/t3wJD_ECxJY"
-allowfullscreen></iframe>
+allowfullscreen>
+</iframe>
 
+<div class="buttons">
 <button class="interactive-btn"
 onclick="toggleCanvas('pickCanvas', pickPlayers, pickSteps)">
 Показать схему
@@ -61,8 +67,9 @@ onclick="toggleCanvas('pickCanvas', pickPlayers, pickSteps)">
 onclick="nextStep('pickCanvas', pickPlayers, pickSteps)">
 Следующий шаг
 </button>
+</div>
 
-<canvas id="pickCanvas" class="court-canvas" width="500" height="280"></canvas>
+<canvas id="pickCanvas" class="court-canvas" width="500" height="300"></canvas>
 
 </section>
 
@@ -72,14 +79,16 @@ onclick="nextStep('pickCanvas', pickPlayers, pickSteps)">
 
 <h2>3. Fast Break</h2>
 
-<img src="{% static 'images/zones/fast.png' %}" class="zone-img">
+<img src="{% static 'images/zones/fast.png' %}" class="zone-img" alt="Fast Break">
 
 <p>Быстрая атака после перехвата или подбора.</p>
 
 <iframe class="video-frame"
 src="https://www.youtube.com/embed/QBU0Z0SW8Qk"
-allowfullscreen></iframe>
+allowfullscreen>
+</iframe>
 
+<div class="buttons">
 <button class="interactive-btn"
 onclick="toggleCanvas('fastCanvas', fastPlayers, fastSteps)">
 Показать схему
@@ -89,8 +98,9 @@ onclick="toggleCanvas('fastCanvas', fastPlayers, fastSteps)">
 onclick="nextStep('fastCanvas', fastPlayers, fastSteps)">
 Следующий шаг
 </button>
+</div>
 
-<canvas id="fastCanvas" class="court-canvas" width="500" height="280"></canvas>
+<canvas id="fastCanvas" class="court-canvas" width="500" height="300"></canvas>
 
 </section>
 
@@ -100,14 +110,16 @@ onclick="nextStep('fastCanvas', fastPlayers, fastSteps)">
 
 <h2>4. Give & Go</h2>
 
-<img src="{% static 'images/zones/go.png' %}" class="zone-img">
+<img src="{% static 'images/zones/go.png' %}" class="zone-img" alt="Give and Go">
 
 <p>Игрок отдаёт пас и сразу делает рывок к кольцу.</p>
 
 <iframe class="video-frame"
 src="https://www.youtube.com/embed/oJ6FEKSaWAs"
-allowfullscreen></iframe>
+allowfullscreen>
+</iframe>
 
+<div class="buttons">
 <button class="interactive-btn"
 onclick="toggleCanvas('goCanvas', goPlayers, goSteps)">
 Показать схему
@@ -117,8 +129,9 @@ onclick="toggleCanvas('goCanvas', goPlayers, goSteps)">
 onclick="nextStep('goCanvas', goPlayers, goSteps)">
 Следующий шаг
 </button>
+</div>
 
-<canvas id="goCanvas" class="court-canvas" width="500" height="280"></canvas>
+<canvas id="goCanvas" class="court-canvas" width="500" height="300"></canvas>
 
 </section>
 

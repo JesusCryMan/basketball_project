@@ -1,144 +1,158 @@
-/* Общий фон и шрифты */
-body {
-    background-color: #0d0d0d;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.attack-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
+/* ===== Контейнер ===== */
+.attack-container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    color:white;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap:20px;
+    animation: fadeIn 1s ease-in;
 }
 
 /* Заголовок страницы */
-.attack-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #f6b93b;
+.attack-title{
+    grid-column: 1 / -1; /* заголовок занимает всю ширину */
+    text-align:center;
+    font-size:38px;
+    margin-bottom:30px;
+    color:#ffd700;
+    text-shadow: 2px 2px 6px #000;
+    animation: fadeIn 1.2s ease-in;
 }
 
-/* Секции тактик */
-.tactic-section {
-    background-color: #1a1a1a;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-    transition: transform 0.2s;
+/* ===== Тактики ===== */
+.tactic-section{
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+    transition:0.3s, transform 0.3s;
+    opacity:0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s forwards;
 }
 
-.tactic-section:hover {
+.tactic-section:nth-child(2){ animation-delay:0.2s; }
+.tactic-section:nth-child(3){ animation-delay:0.4s; }
+.tactic-section:nth-child(4){ animation-delay:0.6s; }
+
+.tactic-section:hover{
+    box-shadow:0 0 30px rgba(255,215,0,0.7);
     transform: translateY(-5px);
 }
 
-.tactic-section h2 {
-    color: #f6b93b;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+/* Заголовки тактик */
+.tactic-section h2{
+    margin-bottom:10px;
+    color:#ffd700;
+    text-shadow: 1px 1px 3px #000;
 }
 
-.tactic-section p {
-    font-size: 1rem;
-    margin-bottom: 15px;
+/* Текст описания */
+.tactic-section p{
+    margin:10px 0;
+    font-size:15px;
+}
+
+/* Фото схем */
+.zone-img{
+    width:100%;
+    height:250px;
+    object-fit:contain;
+    background:#111;
+    border-radius:10px;
+    border:2px solid #444;
+    padding:5px;
+    margin-top:10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.zone-img:hover{
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(255,215,0,0.5);
 }
 
 /* Видео */
-.video-frame {
-    width: 100%;
-    max-width: 560px;
-    height: 315px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    display: block;
+.video-frame{
+    width:100%;
+    height:200px;
+    margin-top:10px;
+    border-radius:10px;
+    border:2px solid #444;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Кнопка интерактив */
-.interactive-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-bottom: 15px;
-    background-color: #f6b93b;
-    color: #0d0d0d;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+.video-frame:hover{
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255,215,0,0.5);
 }
 
-.interactive-btn:hover {
-    background-color: #e1a12b;
-    transform: scale(1.05);
+/* Кнопки */
+.interactive-btn{
+    background:#ffd700;
+    color:black;
+    border:none;
+    padding:8px 15px;
+    border-radius:8px;
+    margin-top:10px;
+    margin-right:8px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* Canvas интерактив */
-.court-canvas {
-    width: 100%;
-    height: 280px;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    display: none; /* по умолчанию скрыт */
-    margin-bottom: 15px;
+.interactive-btn:hover{
+    background:#ffcc00;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255,215,0,0.7);
 }
 
-/* Ссылки и подсветка */
-a {
-    color: #f6b93b;
-    text-decoration: none;
+/* Canvas */
+.court-canvas{
+    width:100%;
+    height:250px;
+    background:#0f0f0f;
+    border:2px solid #444;
+    border-radius:10px;
+    margin-top:10px;
+    display:none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-/* Картинки зон */
-.zone-img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-    display: block;
-    margin: 0 auto 15px auto; /* центрирование + отступ снизу */
-    transition: transform 0.3s; /* плавное увеличение при hover */
-}
-
-.zone-img:hover {
-    transform: scale(1.03); /* лёгкое увеличение картинки при наведении */
-}
-
-/* Специально подогнанные размеры */
-.tactic-section:nth-of-type(2) .zone-img,  /* Пик&Ролл */
-.tactic-section:nth-of-type(3) .zone-img { /* Быстрый прорыв */
-    max-width: 500px;
-}
-
-.tactic-section:nth-of-type(1) .zone-img,  /* ISO */
-.tactic-section:nth-of-type(4) .zone-img { /* Give & Go */
-    max-width: 600px;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .video-frame {
-        height: 200px;
+/* ===== Адаптация для планшетов и мобильных ===== */
+@media (max-width:900px){
+    .attack-container{
+        grid-template-columns: 1fr; /* одна колонка */
+        padding:15px;
     }
-    .tactic-section h2 {
-        font-size: 1.5rem;
+
+    .zone-img{
+        height:180px;
+    }
+
+    .video-frame{
+        height:180px;
+    }
+
+    .court-canvas{
+        height:180px;
     }
 }
 
-@media (max-width: 480px) {
-    .attack-title {
-        font-size: 2rem;
-    }
-    .tactic-section {
-        padding: 15px;
-    }
-    .zone-img {
-        max-width: 100%; /* на мобильных устройствах картинки будут полностью подстраиваться */
+/* ===== Анимации ===== */
+@keyframes fadeIn{
+    from { opacity:0; }
+    to { opacity:1; }
+}
+
+@keyframes fadeUp{
+    to {
+        opacity:1;
+        transform: translateY(0);
     }
 }
